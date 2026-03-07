@@ -29,6 +29,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ハンバーガーメニューの開閉処理
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+
+    if (hamburger && nav) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // メニューリンククリック時に閉じる
+        document.querySelectorAll('.nav-list a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+    }
+
     // FAQアコーディオン
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(question => {
